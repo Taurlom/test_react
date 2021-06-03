@@ -1,0 +1,11 @@
+.add-comment {
+  margin-top: 15px;
+
+  &__input {
+    width: 100%;
+    border: 1px solid #ccc;
+    height: 30px;
+    padding: 0 10px;
+    outline: none;
+  }
+}

@@ -1,0 +1,28 @@
+.comment {
+  font-size: 15px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: darkgreen;
+  }
+
+  &__username {
+    font-weight: 400;
+  }
+
+  &__comment-time {
+    color: silver;
+  }
+}
+
+.comment-content {
+  padding: 8px 0;
+}
