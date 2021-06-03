@@ -1,28 +1,43 @@
 .comment {
-  font-size: 15px;
+  margin-bottom: 15px;
 }
 
 .comment-header {
+  color: #757575;
   display: flex;
   align-items: center;
 
   &__avatar {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     margin-right: 8px;
     border-radius: 50%;
-    background-color: darkgreen;
+    background: url("./img/avatars/default.svg") center / cover;
   }
 
   &__username {
-    font-weight: 400;
+    font-size: 13px;
+    font-weight: 700;
   }
 
   &__comment-time {
-    color: silver;
+    font-size: 12px;
   }
 }
 
 .comment-content {
-  padding: 8px 0;
+  padding: 8px 0 6px;
+}
+
+.comment-bar {
+  &__button {
+    margin-right: 8px;
+    padding: 0;
+    color: #138813;
+    border: none;
+    background: none;
+    font-size: 13px;
+    line-height: 22px;
+    cursor: pointer;
+  }
 }
