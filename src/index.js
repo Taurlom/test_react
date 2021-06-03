@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import Comments from './Comments';
-import reportWebVitals from './reportWebVitals';
+import data from './data';
+
+const currentUser = {
+    name: 'Taurlom',
+    avatar: './img/avatars/taurlom.png'
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <Comments />
+    <Comments data={data} user={currentUser}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
