@@ -14,10 +14,10 @@ function Comments(props) {
 
   function addComment(comment) {
       const newTree = [...tree];
-      const date = new Date;
+      const date = new Date();
 
       newTree.push({
-          id: tree.length + 1,
+          id: `${new Date().getTime()}`,
           user: user,
           message: comment[0],
           time: date.toLocaleString('ru')
@@ -30,9 +30,13 @@ function Comments(props) {
     <Context.Provider value={{ deleteComment, addComment }}>
         <div className="comments">
             {tree.map(comment => {
-                return (
-                    <Comment id={comment.id} time={comment.time} user={comment.user} message={comment.message}/>
-                );
+                return (<Comment
+                    id={`${new Date().getTime()}`}
+                    time={comment.time}
+                    user={comment.user}
+                    message={comment.message}
+                    thread={comment.thread}
+                />)
             })}
             <AddComment/>
         </div>

@@ -43,6 +43,12 @@
   }
 }
 
-.comment-thread {
+.comment-input {
   margin-bottom: 16px;
+}
+
+.comment-thread {
+  margin: 12px 0 0 16px;
+  padding-left: 16px;
+  border-left: 1px dashed #979797;
 }

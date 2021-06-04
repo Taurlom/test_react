@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import Context from "./context";
+import cn from 'classnames'
 import './Comment.scss'
 import AddComment from "./AddComment";
 
 function Comment(props) {
-    const { user, id, time, message } = props;
+    const { user, id, time, message, replyed, thread } = props;
     const { avatar, name } = user;
     const [reply, setReply] = useState(false);
     const { deleteComment } = useContext(Context);
@@ -14,8 +15,11 @@ function Comment(props) {
     }
 
     return (
-        <div>
-            <div key={id} className="comment">
+        <div className={cn({
+            'comment': true,
+            'comment_replyed': replyed
+        })}>
+            <div>
                 <div className="comment-header">
                     <div className="comment-header__avatar" />
                     <div>
@@ -36,8 +40,22 @@ function Comment(props) {
             </div>
 
             {reply && (
-                <div className='comment-thread'>
+                <div className='comment-input'>
                     <AddComment thread={id} />
+                </div>
+            )}
+
+            {thread && (
+                <div className='comment-thread'>
+                    {thread.map(comment => {
+                        return (<Comment
+                            id={comment.id}
+                            time={comment.time}
+                            user={comment.user}
+                            message={comment.message}
+                            thread={comment.thread}
+                        />)
+                    })}
                 </div>
             )}
         </div>
