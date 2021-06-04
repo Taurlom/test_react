@@ -18,11 +18,8 @@ function Comments(props) {
 
       newTree.push({
           id: tree.length + 1,
-          user: {
-              name: user.name,
-              avatar: user.avatar
-          },
-          message: comment,
+          user: user,
+          message: comment[0],
           time: date.toLocaleString('ru')
       });
 

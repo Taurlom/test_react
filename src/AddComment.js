@@ -1,16 +1,65 @@
 import React, { useContext, useState } from 'react';
+import cn from 'classnames';
 import Context from "./context";
 
 import './AddComment.scss'
 
-function AddComment() {
+function AddComment(props) {
     const { addComment } = useContext(Context);
     const [ comment, setComment ] = useState('');
+    const [ active, setActive ] = useState(false);
+    const { id } = props;
+
+    const handleAddClick = () => {
+        addComment.call(null, [comment, id]);
+        setComment('');
+    }
+
+    const handleCancelClick = () => {
+        setComment('');
+        setActive(false);
+    }
+
+    const handleFocus = () => {
+        setActive(true);
+    }
+
+    const handleBlur = () => {
+        !comment && setActive(false);
+    }
 
     return (
-        <div className="add-comment">
-            <textarea className="add-comment__textarea" placeholder="Write Something..." value={comment} onChange={e => setComment(e.target.value)}/>
-            <button className="add-comment__button" onClick={addComment.bind(null, comment)}>Add Comment</button>
+        <div className={cn({
+            'add-comment': true,
+            'add-comment_active': active
+        })}>
+            <div className="add-comment__textarea-block">
+                <textarea
+                    className="add-comment__textarea"
+                    placeholder="Write Something..."
+                    value={comment}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    onChange={e => setComment(e.target.value)}
+                />
+            </div>
+            <div className={cn({
+                'add-comment__buttons': true,
+                'add-comment__buttons_show': active
+            })}>
+                <button
+                    className="add-comment__button add-comment__button_cancel"
+                    onClick={handleCancelClick}
+                >
+                    Cancel
+                </button>
+                <button
+                    className="add-comment__button add-comment__button_add"
+                    onClick={handleAddClick}
+                >
+                    Add Comment
+                </button>
+            </div>
         </div>
     );
 }

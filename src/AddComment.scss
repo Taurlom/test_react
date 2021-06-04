@@ -1,19 +1,63 @@
 .add-comment {
+  display: flex;
+  flex-direction: column;
   margin-top: 15px;
+  border: 1px solid #e5e5e5;
+  height: 40px;
+  overflow: hidden;
+
+  &_active {
+    height: 134px;
+    border-color: #c4c1c1;
+  }
+
+  &__textarea-block {
+    flex-grow: 1;
+    position: relative;
+  }
 
   &__textarea {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid #e5e5e5;
-    height: 40px;
-    padding: 10px 12px;
+    padding: 8px 12px;
     outline: none;
-    transition: .3s;
+    border: none;
+    resize: none;
+  }
 
-    &:focus {
-      border-color: #c4c1c1;
-      height: auto;
-      min-height: 134px;
+  &__buttons {
+    box-sizing: border-box;
+    padding: 12px 12px 0 0;
+    display: none;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    height: 56px;
+    right: 0;
+    bottom: 0;
+
+    &_show {
+      display: flex;
+    }
+  }
+
+  &__button {
+    border: none;
+    outline: none;
+    height: 32px;
+    padding: 6px 12px;
+    cursor: pointer;
+
+    &_cancel {
+      background: transparent;
+      color: #898989;
+    }
+
+    &_add {
+      background: #138813;
+      color: #fff;
     }
   }
 }
