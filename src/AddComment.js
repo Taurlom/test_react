@@ -8,10 +8,10 @@ function AddComment(props) {
     const { addComment } = useContext(Context);
     const [ comment, setComment ] = useState('');
     const [ active, setActive ] = useState(false);
-    const { id } = props;
+    const { index } = props;
 
     const handleAddClick = () => {
-        addComment.call(null, [comment, id]);
+        addComment.call(null, [index, comment]);
         setComment('');
     }
 

@@ -5,7 +5,7 @@ import './Comment.scss'
 import AddComment from "./AddComment";
 
 function Comment(props) {
-    const { user, id, time, message, replyed, thread } = props;
+    const { user, id, time, message, thread, index } = props;
     const { avatar, name } = user;
     const [reply, setReply] = useState(false);
     const { deleteComment } = useContext(Context);
@@ -16,8 +16,7 @@ function Comment(props) {
 
     return (
         <div className={cn({
-            'comment': true,
-            'comment_replyed': replyed
+            'comment': true
         })}>
             <div>
                 <div className="comment-header">
@@ -34,26 +33,26 @@ function Comment(props) {
                 <div className="comment-content">{message}</div>
                 <div className="comment-bar">
                     <button className="comment-bar__button" onClick={handleReply}>Reply</button>
-                    <button className="comment-bar__button" onClick={deleteComment.bind(null, id)}>Remove</button>
+                    <button className="comment-bar__button" onClick={deleteComment.bind(null, index)}>Remove</button>
                     <div className="comment-bar__dots"></div>
                 </div>
             </div>
 
             {reply && (
                 <div className='comment-input'>
-                    <AddComment thread={id} />
+                    <AddComment index={index} />
                 </div>
             )}
 
-            {thread && (
+            {thread && thread !== [] && (
                 <div className='comment-thread'>
-                    {thread.map(comment => {
+                    {thread.map((comment, i) => {
                         return (<Comment
-                            id={comment.id}
+                            index={index + i}
                             time={comment.time}
                             user={comment.user}
                             message={comment.message}
-                            thread={comment.thread}
+                            thread={comment.thread || []}
                         />)
                     })}
                 </div>
