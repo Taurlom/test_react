@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import Comments from './Comments';
+import App from './App';
 import data from './data';
 
 const currentUser = {
@@ -11,7 +11,7 @@ const currentUser = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Comments data={data} user={currentUser}/>
+    <App data={data} user={currentUser}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

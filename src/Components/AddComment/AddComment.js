@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import cn from 'classnames';
-import Context from "./context";
+import Context from "../../context";
 
 import './AddComment.scss'
 
@@ -8,16 +8,20 @@ function AddComment(props) {
     const { addComment } = useContext(Context);
     const [ comment, setComment ] = useState('');
     const [ active, setActive ] = useState(false);
-    const { index } = props;
+    const { index, onAdd, onCancel } = props;
 
     const handleAddClick = () => {
         addComment.call(null, [index, comment]);
         setComment('');
+
+        onAdd && onAdd();
     }
 
     const handleCancelClick = () => {
         setComment('');
         setActive(false);
+
+        onCancel && onCancel();
     }
 
     const handleFocus = () => {

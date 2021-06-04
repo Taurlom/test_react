@@ -12,7 +12,7 @@
     height: 32px;
     margin-right: 8px;
     border-radius: 50%;
-    background: url("./img/avatars/default.svg") center / cover;
+    background: url("../../img/avatars/default.svg") center / cover;
   }
 
   &__username {
@@ -34,6 +34,7 @@
   &__button {
     margin-right: 8px;
     padding: 0;
+    outline: none;
     color: #138813;
     border: none;
     background: none;

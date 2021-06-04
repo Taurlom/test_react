@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import './Comments.scss';
-import Comment from './Comment';
-import AddComment from './AddComment';
+import './App.scss';
+import Comment from './Components/Comment/Comment';
+import AddComment from './Components/AddComment/AddComment';
 import Context from "./context";
 
-function Comments(props) {
+function App(props) {
   const { data, user } = props;
   const [tree, setTree] = useState(data);
 
@@ -74,4 +74,4 @@ function Comments(props) {
   );
 };
 
-export default Comments;
+export default App;
